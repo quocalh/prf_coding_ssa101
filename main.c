@@ -32,8 +32,6 @@ int main()
     printf("Client ID is %d\n", first_client.ID);
     printf("Client name is: %s\n", first_client.name);
 
-    TheNumber();
-
     CurrentTime currentTime;
 
     printf("today is a good day\n");

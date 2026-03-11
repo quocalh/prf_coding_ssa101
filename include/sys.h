@@ -50,11 +50,5 @@ void setClientSubscriptionBadge(SystemManager *SystemManager, SubscriptionBadge 
 void fetchTrainerIDsbyName(SystemManager *SystemManager, const char Name);
 void fetchClientIDsbyName(SystemManager *SystemManager, const char Name);
 
-//     // GET EXPIRED LIST CLIENT
-// void fetchExpiredSubscriptionClients(SystemManager *SystemManager);
-
-//     // GET PAYING LIST TRAINER
-// void fetchPayingTrainers(SystemManager *SystemManager);
-
 
 #endif

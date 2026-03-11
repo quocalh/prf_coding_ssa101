@@ -90,7 +90,7 @@ void fetchTrainerIDsbyName(SystemManager *SystemManager, const char Name)
   {
     
     Trainer trainer = SystemManager->trainers[i];
-    // client.name;
+    // trainer.name;
   
     if (stringCompare(Name, trainer.name))
     {

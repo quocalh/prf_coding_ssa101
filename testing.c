@@ -7,6 +7,8 @@ int getStringLength(const char *string)
     return (int)strlen(string);
 }
 
+
+
 int main()
 {
     const char hello[200] = "NIGGER";
