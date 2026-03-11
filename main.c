@@ -41,6 +41,6 @@ int main()
     FetchTime(&currentTime);
     printf("today is %d/%d/%d\n", currentTime.date, currentTime.month ,currentTime.year);
     
+    printf("nigger");
     mainInterface();
-    
 }
