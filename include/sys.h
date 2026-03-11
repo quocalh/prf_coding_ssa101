@@ -8,17 +8,21 @@
 #include "trainer.h"
 
 #define MAX_STRING_LENGTH 50
+#define QUERY_MAX 5
+#define EVALUATE_RANK 2
 
 //  SINGLETON
 typedef struct
 {
     Client clients[MAX_CLIENT];
     Trainer trainers[MAX_TRAINER];
+    int ClientCount;
+    int TrainerCount;
 
     char fileNameTrainer[MAX_STRING_LENGTH];
     char fileNameClient[MAX_STRING_LENGTH];
 
-    int ID_generator;
+    // int ID_generator;
 } SystemManager;
 
 // FUNCTIONS
