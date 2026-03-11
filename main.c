@@ -42,4 +42,5 @@ int main()
     printf("today is %d/%d/%d\n", currentTime.date, currentTime.month ,currentTime.year);
     
     mainInterface();
+    
 }
