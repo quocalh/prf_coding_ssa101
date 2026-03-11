@@ -47,8 +47,8 @@ void setTrainerSalary(SystemManager *SystemManager, int newIncome);
 void setClientSubscriptionBadge(SystemManager *SystemManager, enum SUBSCRIPTIONBADGE SubscriptionBadge);
 
     // GET ID BY NAME - LIST NAME LIST WITH ID WITH THAT NAME (CASE INSENSITIVE)
-void fetchTrainerIDsbyName(SystemManager *SystemManager, const char Name);
-void fetchClientIDsbyName(SystemManager *SystemManager, const char Name);
+void fetchTrainerIDsbyName(SystemManager *SystemManager, const char *Name);
+void fetchClientIDsbyName(SystemManager *SystemManager, const char *Name);
 
 
 #endif

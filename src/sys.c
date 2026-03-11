@@ -45,7 +45,7 @@ bool stringCompare(const char *name1, const char *name2)
   return true;
 }
 
-void fetchClientIDsbyName(SystemManager *SystemManager, const char Name)
+void fetchClientIDsbyName(SystemManager *SystemManager, const char *Name)
 {  
   int queryLength = min(SystemManager->ClientCount, QUERY_MAX);
   int IDquery[queryLength];
@@ -78,7 +78,7 @@ void fetchClientIDsbyName(SystemManager *SystemManager, const char Name)
 
 
 
-void fetchTrainerIDsbyName(SystemManager *SystemManager, const char Name)
+void fetchTrainerIDsbyName(SystemManager *SystemManager, const char *Name)
 {  
   int queryLength = min(SystemManager->TrainerCount, QUERY_MAX);
   int IDquery[queryLength];
