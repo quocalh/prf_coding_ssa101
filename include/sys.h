@@ -31,16 +31,16 @@ Client getClientbyID(SystemManager *SystemManager, int ClientID); // done
 Trainer getTrainerbyID(SystemManager *SystemManager, int TrainerID); // done
 
     // INSERT OBJECTS
-void insertClient(SystemManager *SystemManager, char Name);
-void insertTrainer(SystemManager *SystemManager, char Name);
+void insertClient(SystemManager *SystemManager, const char *Name);
+void insertTrainer(SystemManager *SystemManager, const char *Name);
 
     // IMPORT TXT FILE
-void importTrainerData(SystemManager *SystemManager, const char fileName);
-void importClientData(SystemManager *SystemManager, const char fileName);
+void importTrainerData(SystemManager *SystemManager, const char *fileName);
+void importClientData(SystemManager *SystemManager, const char *fileName);
 
     // EXPORT TXT FILE  
-void exportTrainerData(SystemManager *SystemManager, const char fileName);
-void exportClientData(SystemManager *SystemManager, const char fileName);
+void exportTrainerData(SystemManager *SystemManager, const char *fileName);
+void exportClientData(SystemManager *SystemManager, const char *fileName);
 
     // SET FUNCTION
 void setTrainerSalary(SystemManager *SystemManager, int newIncome);
