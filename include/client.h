@@ -6,11 +6,13 @@
 
 enum SUBSCRIPTIONBADGE
 {
+    FREE, 
     GOLD,
     PLATINUM,
     DIAMOND,
 };
 
+extern const char *BadgeInString[];
 
 typedef struct{
     int ID;

@@ -9,7 +9,7 @@
 #include <string.h>
 
 #define READ_FAILED_STRING "Failed to read the file\n"
-#define READ_SUCCESSED_STRING "Successfull read the file"
+#define READ_SUCCESSED_STRING "Successfull read the file\n"
 
 Client getClientbyID(SystemManager *SystemManager, int ClientID){
   	return SystemManager -> clients[ClientID];
@@ -27,21 +27,21 @@ int min(int a, int b)
 enum SUBSCRIPTIONBADGE SubscriptionBadgeStringEnumConvert(const char *Badge)
 {	
 	// could have implemented a hashmap righthere
-	if (Badge == "GOLD")
+	if (strcmp(Badge, "GOLD"))
 	{
 		return GOLD;
 	}
-	else if (Badge == "PLATINUM")
+	else if (strcmp(Badge, "PLATINUM"))
 	{
 		return PLATINUM;
 	}
-	else if (Badge == "DIAMOND")
+	else if (strcmp(Badge, "DIAMOND"))
 	{
 		return DIAMOND;
 	}
 	else
 	{
-		return NULL;
+		return FREE;
 	}
 	
 
@@ -64,9 +64,10 @@ void importClientData(SystemManager *SystemManager, const char *fileName)
 	char name[MAX_LENGTH_NAME];
 	char badge[MAX_LENGTH_NAME];
 	int i = 0; // ID generator
-	while(fscanf("%s %s", &name, &badge) == 2)
+	while(fscanf(filepnt, "%s %s", &name, &badge) == 2)
 	{	
 		strcpy(SystemManager->clients[i].name, name);
+		printf("badge: %s\n", badge);
 		SystemManager->clients[i].subscriptionBadge = SubscriptionBadgeStringEnumConvert(badge);
 		SystemManager->clients[i].ID = SystemManager->ClientCount;
 
@@ -75,7 +76,7 @@ void importClientData(SystemManager *SystemManager, const char *fileName)
 	}
 
 
-	print(READ_SUCCESSED_STRING);
+	printf(READ_SUCCESSED_STRING);
 	fclose(filepnt);
 }	
 

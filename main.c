@@ -15,9 +15,9 @@ int main()
     SayGoodbye();
     SayHello();
 
-    SystemManager systemManger;
+    SystemManager systemManager;
     Client first_client;
-    systemManger.clients[0] = first_client;
+    systemManager.clients[0] = first_client;
     strcpy(first_client.name, "Niggaton");
 
     printf("the first client's name is: %s\n", first_client.name);
@@ -39,5 +39,12 @@ int main()
     FetchTime(&currentTime);
     printf("today is %d/%d/%d\n", currentTime.date, currentTime.month ,currentTime.year);
     
-    mainInterface();
+    // mainInterface();
+
+    importClientData(&systemManager, "io/Clients.txt");
+    for (int i; i < systemManager.ClientCount; i++)
+    {
+        Client client = systemManager.clients[i];
+        printf("name: %s, ID: %d, badge: %s\n", client.name, client.ID, BadgeInString[client.subscriptionBadge]);
+    }
 }
