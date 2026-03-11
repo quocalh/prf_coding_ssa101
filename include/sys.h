@@ -47,14 +47,14 @@ void setTrainerSalary(SystemManager *SystemManager, int newIncome);
 void setClientSubscriptionBadge(SystemManager *SystemManager, SubscriptionBadge SubscriptionBadge);
 
     // GET ID BY NAME - LIST NAME LIST WITH ID WITH THAT NAME (CASE INSENSITIVE)
-void fetchClientIDsbyName(SystemManager *SystemManager, const char Name);
 void fetchTrainerIDsbyName(SystemManager *SystemManager, const char Name);
+void fetchClientIDsbyName(SystemManager *SystemManager, const char Name);
 
-    // GET EXPIRED LIST CLIENT
-void fetchExpiredSubscriptionClients(SystemManager *SystemManager);
+//     // GET EXPIRED LIST CLIENT
+// void fetchExpiredSubscriptionClients(SystemManager *SystemManager);
 
-    // GET PAYING LIST TRAINER
-void fetchPayingTrainers(SystemManager *SystemManager);
+//     // GET PAYING LIST TRAINER
+// void fetchPayingTrainers(SystemManager *SystemManager);
 
 
 #endif

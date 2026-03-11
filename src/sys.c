@@ -76,3 +76,36 @@ void fetchClientIDsbyName(SystemManager *SystemManager, const char Name)
 
 }
 
+
+
+void fetchTrainerIDsbyName(SystemManager *SystemManager, const char Name)
+{  
+  int queryLength = min(SystemManager->TrainerCount, QUERY_MAX);
+  int IDquery[queryLength];
+
+  int i = 0;
+  int queryCount = 0;
+
+  while((queryCount < queryLength) || (i < SystemManager->TrainerCount))
+  {
+    
+    Trainer trainer = SystemManager->trainers[i];
+    // client.name;
+  
+    if (stringCompare(Name, trainer.name))
+    {
+      IDquery[queryCount] = trainer.ID;
+      queryCount++;
+    }
+    i++;
+  }
+  int ID;
+  for (i  = 0; i < queryCount; i++)
+  {
+    ID = IDquery[i]; 
+    printf("Name = %s -> ID = %d", ID, SystemManager->trainers[ID]);
+  }
+
+
+}
+

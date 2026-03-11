@@ -17,10 +17,10 @@ void mainInterface()
         printf("1. import Data \n");
         printf("2. export Data \n");
         printf("3. insert Trainer \n");
-        printf("4. insert Trainer \n");
+        printf("4. insert Client \n");
         printf("-1. exit\n");
         
-        printf("make your choice betch: ");
+        printf("make your choice: ");
 
         if (scanf("%d", &choice) != 1)
         {
