@@ -121,16 +121,21 @@ void fetchClientIDsbyName(SystemManager *SystemManager, const char *Name)
 
   	  	if (stringCompare(Name, client.name))
   	  	{
-  	  	  IDquery[queryCount] = client.ID;
-  	  	  queryCount++;
+				// testing phrases
+			// printf("the client's name: %s\n", client.name);
+  	  	  	IDquery[queryCount] = client.ID;
+  	  	  	queryCount++;
   	  	}
   	  	i++;
   	}
+	printf("the query count: %d\n", queryCount);
+
   	int ID;
-  	for (i  = 0; i < queryCount; i++)
+  	for (i = 0; i < queryCount; i++)
   	{
   	  	ID = IDquery[i]; 
-  	  	printf("Name = %s -> ID = %d", ID, SystemManager->clients[ID]);
+		Client client = SystemManager->clients[ID];
+  	  	printf("Name = %s -> ID = %d\n", client.name, client.ID);
   	}
 
 

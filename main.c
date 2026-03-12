@@ -47,4 +47,6 @@ int main()
         Client client = systemManager.clients[i];
         printf("name: %s, ID: %d, badge: %s\n", client.name, client.ID, BadgeInString[client.subscriptionBadge]);
     }
+    fetchClientIDsbyName(&systemManager, "N");
+    // testing 
 }
