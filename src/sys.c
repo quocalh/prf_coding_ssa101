@@ -43,13 +43,36 @@ enum SUBSCRIPTIONBADGE SubscriptionBadgeStringEnumConvert(const char *Badge)
 	{
 		return FREE;
 	}
-	
-
 }
 
   // IMPORT TXT FILE
 void importTrainerData(SystemManager *SystemManager, const char *fileName)
 {
+	FILE *filepnt = fopen(fileName, "r");
+	if (filepnt == NULL)
+	{
+		printf(READ_FAILED_STRING);
+		fclose(filepnt);
+		return;
+	}
+	char name[MAX_LENGTH_NAME];
+	int salary;
+	
+	int i = 0;
+	while (fscanf("%s %d", &name, &salary) == 2)
+	{
+		Trainer trainer = SystemManager->trainers[i];
+		
+		strcpy(trainer.name, name);
+		trainer.salary = salary;
+		trainer.ID = i;
+
+		i++;
+	}
+	SystemManager->TrainerCount = i + 1;
+	
+	printf(READ_SUCCESSED_STRING);
+	fclose(filepnt);
 
 }
 void importClientData(SystemManager *SystemManager, const char *fileName)
@@ -69,11 +92,11 @@ void importClientData(SystemManager *SystemManager, const char *fileName)
 		strcpy(SystemManager->clients[i].name, name);
 		printf("badge: %s\n", badge);
 		SystemManager->clients[i].subscriptionBadge = SubscriptionBadgeStringEnumConvert(badge);
-		SystemManager->clients[i].ID = SystemManager->ClientCount;
+		SystemManager->clients[i].ID = i;
 
-		SystemManager->ClientCount ++;
 		i++;
 	}
+	SystemManager->ClientCount = i + 1;
 
 
 	printf(READ_SUCCESSED_STRING);
@@ -162,11 +185,14 @@ void fetchTrainerIDsbyName(SystemManager *SystemManager, const char *Name)
   	  	}
   	  	i++;
   	}
+	printf("the query count: %d\n", queryCount);
+
   	int ID;
-  	for (i  = 0; i < queryCount; i++)
+  	for (i = 0; i < queryCount; i++)
   	{
   	  	ID = IDquery[i]; 
-  	  	printf("Name = %s -> ID = %d", ID, SystemManager->trainers[ID]);
+		Trainer trainer = SystemManager->trainers[ID];
+  	  	printf("Name = %s -> ID = %d\n", trainer.name, trainer.ID);
   	}
 
 
