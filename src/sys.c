@@ -59,7 +59,7 @@ void importTrainerData(SystemManager *SystemManager, const char *fileName)
 	int salary;
 	
 	int i = 0;
-	while (fscanf("%s %d", &name, &salary) == 2)
+	while (fscanf(filepnt, "%s %d", &name, &salary) == 2)
 	{
 		Trainer trainer = SystemManager->trainers[i];
 		
@@ -70,7 +70,7 @@ void importTrainerData(SystemManager *SystemManager, const char *fileName)
 		i++;
 	}
 	SystemManager->TrainerCount = i + 1;
-	
+
 	printf(READ_SUCCESSED_STRING);
 	fclose(filepnt);
 
