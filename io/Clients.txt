@@ -1,7 +1,7 @@
-Nguyen_Quoc_Anh NULL
-Nguyen_Truong_An NULL
+Nguyen_Quoc_Anh FREE
+Nguyen_Truong_An FREE
 Highland_Coffee DIAMOND
 Nguyen_Tran_Toan PLATINUM
 Nguyen_Tran_Minnh_Khoi GOLD
-Leaf_Cone NULL
+Leaf_Cone FREE
 Nguyen_Cao_Minh_Hoang PLATINUM

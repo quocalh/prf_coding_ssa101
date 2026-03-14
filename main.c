@@ -41,12 +41,40 @@ int main()
     
     // mainInterface();
 
+
+
+
+        // testing  import func (successful)
     importClientData(&systemManager, "io/Clients.txt");
-    for (int i; i < systemManager.ClientCount; i++)
-    {
-        Client client = systemManager.clients[i];
-        printf("name: %s, ID: %d, badge: %s\n", client.name, client.ID, BadgeInString[client.subscriptionBadge]);
-    }
-    fetchClientIDsbyName(&systemManager, "N");
-    // testing 
+    // for (int i = 0; i < systemManager.ClientCount; i++)
+    // {
+    //     Client client = systemManager.clients[i];
+    //     printf("name: %s, ID: %d, badge: %s\n", client.name, client.ID, BadgeInString[client.subscriptionBadge]);
+    // }
+
+    importTrainerData(&systemManager, "io/Trainers.txt");
+    // for (int i = 0; i < systemManager.TrainerCount; i++)
+    // {
+    //     Trainer trainer = systemManager.trainers[i];
+    //     printf("name: %s, ID: %d, badge: %d\n", trainer.name, trainer.ID, trainer.salary);
+    // }
+
+    // Trainer new_trainer;
+    // systemManager.trainers[systemManager.TrainerCount] = new_trainer;
+    // Trainer *trainer_pnt = &systemManager.trainers[systemManager.TrainerCount];
+    
+        // testing insert
+    // trainer_pnt->ID = systemManager.TrainerCount;
+    // strcpy(trainer_pnt->name, "hello_world");
+    // trainer_pnt->salary = 1230;
+    // systemManager.TrainerCount ++;
+
+        // testing export  
+    exportClientData(&systemManager, "io/Clients.txt");
+    exportTrainerData(&systemManager, "io/Trainers.txt");
+
+
+        // testing fetch funcs(successfull) 
+    // fetchClientIDsbyName(&systemManager, "N");
+    // fetchTrainerIDsbyName(&systemManager, "N");
 }

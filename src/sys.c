@@ -10,6 +10,8 @@
 
 #define READ_FAILED_STRING "Failed to read the file\n"
 #define READ_SUCCESSED_STRING "Successfull read the file\n"
+#define WRITE_FAILED_STRING "Failed to write the file\n"
+#define WRITE_SUCCESSED_STRING "Successfull write the file\n"
 
 Client getClientbyID(SystemManager *SystemManager, int ClientID){
   	return SystemManager -> clients[ClientID];
@@ -27,15 +29,15 @@ int min(int a, int b)
 enum SUBSCRIPTIONBADGE SubscriptionBadgeStringEnumConvert(const char *Badge)
 {	
 	// could have implemented a hashmap righthere
-	if (strcmp(Badge, "GOLD"))
+	if (strcmp(Badge, "GOLD") == 0)
 	{
 		return GOLD;
 	}
-	else if (strcmp(Badge, "PLATINUM"))
+	else if (strcmp(Badge, "PLATINUM") == 0)
 	{
 		return PLATINUM;
 	}
-	else if (strcmp(Badge, "DIAMOND"))
+	else if (strcmp(Badge, "DIAMOND") == 0)
 	{
 		return DIAMOND;
 	}
@@ -59,17 +61,17 @@ void importTrainerData(SystemManager *SystemManager, const char *fileName)
 	int salary;
 	
 	int i = 0;
-	while (fscanf(filepnt, "%s %d", &name, &salary) == 2)
-	{
-		Trainer trainer = SystemManager->trainers[i];
+	while (fscanf(filepnt, "%s %d", name, &salary) == 2)
+	{	
+		Trainer *trainer = &(SystemManager->trainers[i]);
 		
-		strcpy(trainer.name, name);
-		trainer.salary = salary;
-		trainer.ID = i;
+		strcpy(trainer->name, name);
+		trainer->salary = salary;
+		trainer->ID = i;
 
 		i++;
 	}
-	SystemManager->TrainerCount = i + 1;
+	SystemManager->TrainerCount = i;
 
 	printf(READ_SUCCESSED_STRING);
 	fclose(filepnt);
@@ -87,21 +89,72 @@ void importClientData(SystemManager *SystemManager, const char *fileName)
 	char name[MAX_LENGTH_NAME];
 	char badge[MAX_LENGTH_NAME];
 	int i = 0; // ID generator
-	while(fscanf(filepnt, "%s %s", &name, &badge) == 2)
+	while(fscanf(filepnt, "%s %s", name, badge) == 2)
 	{	
 		strcpy(SystemManager->clients[i].name, name);
-		printf("badge: %s\n", badge);
-		SystemManager->clients[i].subscriptionBadge = SubscriptionBadgeStringEnumConvert(badge);
+		strcpy(SystemManager->clients[i].subscriptionBadge, badge);
 		SystemManager->clients[i].ID = i;
 
 		i++;
 	}
-	SystemManager->ClientCount = i + 1;
+	SystemManager->ClientCount = i;
 
 
 	printf(READ_SUCCESSED_STRING);
 	fclose(filepnt);
 }	
+
+    // EXPORT TXT FILE  
+void exportTrainerData(SystemManager *SystemManager, const char *fileName)
+{	
+	FILE *file_pnt = fopen(fileName, "w");
+	if (file_pnt == NULL)
+	{
+		printf(WRITE_FAILED_STRING);
+	}
+	int isFirstLine = true;
+	for (int i = 0; i < SystemManager->TrainerCount; i ++)
+	{	
+		Trainer *trainer = &SystemManager->trainers[i];
+		if (!isFirstLine)
+		{
+			fprintf(file_pnt, "\n");
+		}
+		else
+		{
+			isFirstLine = false;
+		}
+
+		fprintf(file_pnt, "%s %d", trainer->name, trainer->salary);
+	}
+	printf(WRITE_SUCCESSED_STRING);
+	fclose(file_pnt);
+}
+void exportClientData(SystemManager *SystemManager, const char *fileName)
+{
+	FILE *file_pnt = fopen(fileName, "w");
+	if (file_pnt == NULL)
+	{
+		printf(WRITE_FAILED_STRING);
+	}
+	int isFirstLine = true;
+	for (int i = 0; i < SystemManager->ClientCount; i ++)
+	{	
+		Client *client = &SystemManager->clients[i];
+		if (!isFirstLine)
+		{
+			fprintf(file_pnt, "\n");
+		}
+		else
+		{
+			isFirstLine = false;
+		}
+
+		fprintf(file_pnt, "%s %s", client->name, client->subscriptionBadge);
+	}
+	printf(WRITE_SUCCESSED_STRING);
+	fclose(file_pnt);
+}
 
 
 
@@ -136,7 +189,7 @@ void fetchClientIDsbyName(SystemManager *SystemManager, const char *Name)
   	int i = 0;
   	int queryCount = 0;
 
-  	while((queryCount < queryLength) || (i < SystemManager->ClientCount))
+  	while((queryCount < queryLength) && (i < SystemManager->ClientCount))
   	{
 	
   	  	Client client = SystemManager->clients[i];
@@ -172,15 +225,15 @@ void fetchTrainerIDsbyName(SystemManager *SystemManager, const char *Name)
   	int i = 0;
   	int queryCount = 0;
 
-  	while((queryCount < queryLength) || (i < SystemManager->TrainerCount))
+  	while((queryCount < queryLength) && (i < SystemManager->TrainerCount))
   	{
 	
-  	  	Trainer trainer = SystemManager->trainers[i];
+  	  	Trainer *trainer = &SystemManager->trainers[i];
   	  	// trainer.name;
 
-  	  	if (stringCompare(Name, trainer.name))
+  	  	if (stringCompare(Name, trainer->name))
   	  	{
-  	  	  IDquery[queryCount] = trainer.ID;
+  	  	  IDquery[queryCount] = trainer->ID;
   	  	  queryCount++;
   	  	}
   	  	i++;
@@ -191,8 +244,8 @@ void fetchTrainerIDsbyName(SystemManager *SystemManager, const char *Name)
   	for (i = 0; i < queryCount; i++)
   	{
   	  	ID = IDquery[i]; 
-		Trainer trainer = SystemManager->trainers[ID];
-  	  	printf("Name = %s -> ID = %d\n", trainer.name, trainer.ID);
+		Trainer *trainer = &SystemManager->trainers[ID];
+  	  	printf("Name = %s -> ID = %d\n", trainer->name, trainer->ID);
   	}
 
 

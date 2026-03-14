@@ -17,7 +17,7 @@ extern const char *BadgeInString[];
 typedef struct{
     int ID;
     char name[MAX_NAME_LENGTH];
-    enum SUBSCRIPTIONBADGE subscriptionBadge;
+    char subscriptionBadge[MAX_NAME_LENGTH];
 } Client;
 
 
