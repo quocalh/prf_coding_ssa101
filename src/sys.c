@@ -13,6 +13,53 @@
 #define WRITE_FAILED_STRING "Failed to write the file\n"
 #define WRITE_SUCCESSED_STRING "Successfull write the file\n"
 
+int min(int a, int b)
+{
+  	return (a < b) ? a : b;
+}
+
+int max(int a, int b)
+{
+	
+}
+
+void DescendingSortTrainerBySalary(SystemManager *SystemManager)
+{
+
+}
+void AscendingSortTrainerBySalary(SystemManager *SystemManager)
+{
+
+}
+
+
+void DisplayClients(SystemManager *SystemManager)
+{
+	for (int i = 0; i < SystemManager->ClientCount; i++)
+	{	
+		Client *client = &SystemManager->clients[i];
+		printf("%d| \n\tID -> %d \n\tName: \"%s\" \n\tBadge: %s\n", 
+			i + 1, client->ID, 
+			client->name, 
+			client->subscriptionBadge
+		);
+	}
+}
+void DisplayTrainers(SystemManager *SystemManager)
+{
+	for (int i = 0; i < SystemManager->TrainerCount; i++)
+	{	
+		Trainer *trainer = &SystemManager->trainers[i];
+		printf("%d| \n\tID -> %d \n\tName: \"%s\" \n\tSalary: %d\n", 
+			i + 1, trainer->ID, 
+			trainer->name, 
+			trainer->salary
+		);
+	}
+
+}
+
+
 Client getClientbyID(SystemManager *SystemManager, int ClientID){
   	return SystemManager -> clients[ClientID];
 }
@@ -21,10 +68,6 @@ Trainer getTrainerbyID(SystemManager *SystemManager, int TrainerID){
   	return SystemManager -> trainers[TrainerID];
 }
 
-int min(int a, int b)
-{
-  	return (a < b) ? a : b;
-}
 
 enum SUBSCRIPTIONBADGE SubscriptionBadgeStringEnumConvert(const char *Badge)
 {	

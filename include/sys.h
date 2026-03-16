@@ -11,7 +11,7 @@
 #define QUERY_MAX 5
 #define EVALUATE_RANK 2
 
-//  SINGLETON
+//  SINGLETONP
 typedef struct
 {
     Client clients[MAX_CLIENT];
@@ -26,6 +26,15 @@ typedef struct
 } SystemManager;
 
 // FUNCTIONS
+
+    // DISPLAY OBJECSTS
+void DisplayClients(SystemManager *SystemManager);
+void DisplayTrainers(SystemManager *SystemManager);
+    
+    // SORT TRAINER BY SALARY
+void DescendingSortTrainerBySalary(SystemManager *SystemManager);
+void AscendingSortTrainerBySalary(SystemManager *SystemManager);
+
     // FETCHING OBJECTS
 Client getClientbyID(SystemManager *SystemManager, int ClientID); // done
 Trainer getTrainerbyID(SystemManager *SystemManager, int TrainerID); // done
