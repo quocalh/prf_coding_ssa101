@@ -20,6 +20,4 @@ typedef struct{
     char subscriptionBadge[MAX_NAME_LENGTH];
 } Client;
 
-
-
 #endif

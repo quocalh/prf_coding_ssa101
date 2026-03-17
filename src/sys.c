@@ -20,26 +20,104 @@ int min(int a, int b)
 
 int max(int a, int b)
 {
-	
+	return (a > b)? a :  b;
+}
+
+void swap(int* a, int* b)
+{
+	int temp = *b;
+	*b = *a;
+	*a = temp;
 }
 
 void DescendingSortTrainerBySalary(SystemManager *SystemManager)
-{
+{	
+	int indexArray[SystemManager->TrainerCount];
+	for (int i = 0; i < SystemManager->TrainerCount; i++)
+	{
+		indexArray[i] = i;
+	}
+		// bijection projection 
+	for (int i = 0; i < SystemManager->TrainerCount; i++)
+	{	
+		Trainer *trainer_a = &SystemManager->trainers[ indexArray[i] ];
+		for (int j = i + 1; j < SystemManager->TrainerCount; j++)
+		{
+			Trainer *trainer_b = &SystemManager->trainers[ indexArray[j] ];
+			if (trainer_a->salary < trainer_b->salary)
+			{
+				swap(&indexArray[i], &indexArray[j]);
+			}
+		}
+	}
+
+		// display the result
+	for (int i = 0; i < SystemManager->TrainerCount; i++)
+	{
+		Trainer *trainer = &SystemManager->trainers[ indexArray[i] ];
+
+		printf("%d| \n\tID -> %d\n\tName -> %s\n\tSalary -> %d\n", 
+			i + 1, 
+			trainer->ID,
+			trainer->name,
+			trainer->salary
+		);
+	}
 
 }
 void AscendingSortTrainerBySalary(SystemManager *SystemManager)
 {
+	int indexArray[SystemManager->TrainerCount];
+	for (int i = 0; i < SystemManager->TrainerCount; i++)
+	{
+		indexArray[i] = i;
+	}
+		// bijection projection 
+	for (int i = 0; i < SystemManager->TrainerCount; i++)
+	{	
+		Trainer *trainer_a = &SystemManager->trainers[ indexArray[i] ];
+		for (int j = i + 1; j < SystemManager->TrainerCount; j++)
+		{
+			Trainer *trainer_b = &SystemManager->trainers[ indexArray[j] ];
+			if (trainer_a->salary < trainer_b->salary)
+			{
+				swap(&indexArray[i], &indexArray[j]);
+			}
+		}
+	}
+	
+		// display the result
+	for (int i = 0; i < SystemManager->TrainerCount; i++)
+	{
+		Trainer *trainer = &SystemManager->trainers[ indexArray[i] ];
 
+		printf("%d| \n\tID -> %d\n\tName -> %s\n\tSalary -> %d\n", 
+			i + 1, 
+			trainer->ID,
+			trainer->name,
+			trainer->salary
+		);
+	}
 }
 
 
-void DisplayClients(SystemManager *SystemManager)
+
+
+    // DISPLAY OBJECSTS
+void DisplayClients(SystemManager* SystemManager)
 {
+	// SystemManager->clients[0].ID;
+	// SystemManager->clients[0].name;
+	// SystemManager->clients[0].subscriptionBadge;
 	for (int i = 0; i < SystemManager->ClientCount; i++)
 	{	
-		Client *client = &SystemManager->clients[i];
-		printf("%d| \n\tID -> %d \n\tName: \"%s\" \n\tBadge: %s\n", 
-			i + 1, client->ID, 
+		Client* client = &(SystemManager->clients[i]);
+		client->ID;
+		client->name;
+		client->subscriptionBadge;
+		printf("%d|\n\tID -> %d \n\tName -> %s \n\tBadge -> %s\n", 
+			i + 1,
+			client->ID, 
 			client->name, 
 			client->subscriptionBadge
 		);
@@ -48,15 +126,19 @@ void DisplayClients(SystemManager *SystemManager)
 void DisplayTrainers(SystemManager *SystemManager)
 {
 	for (int i = 0; i < SystemManager->TrainerCount; i++)
-	{	
-		Trainer *trainer = &SystemManager->trainers[i];
-		printf("%d| \n\tID -> %d \n\tName: \"%s\" \n\tSalary: %d\n", 
-			i + 1, trainer->ID, 
+	{
+		Trainer* trainer = &(SystemManager->trainers[i]);
+		trainer->ID;
+		trainer->name;
+		trainer->salary;
+		printf("%d|\n\tID -> %d \n\tName -> %s \n\tSalary -> %d\n", 
+			i + 1,
+			trainer->ID, 
 			trainer->name, 
 			trainer->salary
 		);
-	}
 
+	}
 }
 
 

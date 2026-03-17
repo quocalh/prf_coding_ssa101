@@ -69,7 +69,7 @@ int main()
     // trainer_pnt->salary = 1230;
     // systemManager.TrainerCount ++;
 
-    
+
 
         // testing export  
     exportClientData(&systemManager, "io/Clients.txt");
@@ -82,4 +82,6 @@ int main()
         // testing fetch funcs(successfull) 
     // fetchClientIDsbyName(&systemManager, "N");
     // fetchTrainerIDsbyName(&systemManager, "N");
+
+    DescendingSortTrainerBySalary(&systemManager);
 }
