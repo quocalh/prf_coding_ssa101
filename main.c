@@ -71,7 +71,7 @@ int main()
 
 
 
-        // testing export  
+        // testing export -- success
     exportClientData(&systemManager, "io/Clients.txt");
     exportTrainerData(&systemManager, "io/Trainers.txt");
 
@@ -83,5 +83,20 @@ int main()
     // fetchClientIDsbyName(&systemManager, "N");
     // fetchTrainerIDsbyName(&systemManager, "N");
 
-    DescendingSortTrainerBySalary(&systemManager);
+        // sorted display -- success
+    // DescendingSortTrainerBySalary(&systemManager);
+    // AscendingSortTrainerBySalary(&systemManager);
+
+
+        // insert -- success
+    // insertClient(&systemManager, "nailtrimmer3000", "DIAMOND");
+    // insertClient(&systemManager, "nailtrimmer3000", "DIAMOND");
+    // insertClient(&systemManager, "nailtrimmer3000", "DIAMOND");
+    // DisplayClients(&systemManager);
+
+    // insertTrainer(&systemManager, "nailtrimmer3000", 1201);
+    // insertTrainer(&systemManager, "nailtrimmer3000", 1202);
+    // insertTrainer(&systemManager, "nailtrimmer3000", 1203);
+    // DisplayTrainers(&systemManager);
+    // DescendingSortTrainerBySalary(&systemManager);
 }

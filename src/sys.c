@@ -40,9 +40,9 @@ void DescendingSortTrainerBySalary(SystemManager *SystemManager)
 		// bijection projection 
 	for (int i = 0; i < SystemManager->TrainerCount; i++)
 	{	
-		Trainer *trainer_a = &SystemManager->trainers[ indexArray[i] ];
 		for (int j = i + 1; j < SystemManager->TrainerCount; j++)
 		{
+			Trainer *trainer_a = &SystemManager->trainers[ indexArray[i] ];
 			Trainer *trainer_b = &SystemManager->trainers[ indexArray[j] ];
 			if (trainer_a->salary < trainer_b->salary)
 			{
@@ -75,11 +75,12 @@ void AscendingSortTrainerBySalary(SystemManager *SystemManager)
 		// bijection projection 
 	for (int i = 0; i < SystemManager->TrainerCount; i++)
 	{	
-		Trainer *trainer_a = &SystemManager->trainers[ indexArray[i] ];
+
 		for (int j = i + 1; j < SystemManager->TrainerCount; j++)
 		{
 			Trainer *trainer_b = &SystemManager->trainers[ indexArray[j] ];
-			if (trainer_a->salary < trainer_b->salary)
+			Trainer *trainer_a = &SystemManager->trainers[ indexArray[i] ];
+			if (trainer_a->salary > trainer_b->salary)
 			{
 				swap(&indexArray[i], &indexArray[j]);
 			}
@@ -148,6 +149,27 @@ Client getClientbyID(SystemManager *SystemManager, int ClientID){
 
 Trainer getTrainerbyID(SystemManager *SystemManager, int TrainerID){
   	return SystemManager -> trainers[TrainerID];
+}
+
+void insertClient(SystemManager *SystemManager, const char *Name, const char* Badge)
+{
+	Client* client = &SystemManager->clients[SystemManager->ClientCount];
+
+	client->ID = SystemManager->ClientCount;
+	strcpy(client->name, Name);
+	strcpy(client->subscriptionBadge, Badge);
+
+	SystemManager->ClientCount ++;
+}
+void insertTrainer(SystemManager *SystemManager, const char *Name, int salary)
+{
+	Trainer* trainer = &SystemManager->trainers[SystemManager->TrainerCount];
+
+	trainer->ID = SystemManager->TrainerCount;
+	strcpy(trainer->name, Name);
+	trainer->salary = salary;
+
+	SystemManager->TrainerCount ++;
 }
 
 
@@ -281,6 +303,17 @@ void exportClientData(SystemManager *SystemManager, const char *fileName)
 	fclose(file_pnt);
 }
 
+
+    // SET FUNCTION
+void setTrainerSalary(SystemManager *SystemManager, int TrainerID, int newIncome)
+{
+	(&SystemManager->trainers[TrainerID])->salary = newIncome;
+}
+
+void setClientSubscriptionBadge(SystemManager *SystemManager, int ClientID, char* subscriptionBadge)
+{
+	strcpy(SystemManager->clients[ClientID].subscriptionBadge, subscriptionBadge);
+}
 
 
     // STRING COMPARISON FOR FETCHING FUNTIONS | can not make use of spare set or linked list unfortunatelly

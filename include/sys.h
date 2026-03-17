@@ -40,8 +40,8 @@ Client getClientbyID(SystemManager *SystemManager, int ClientID); // done
 Trainer getTrainerbyID(SystemManager *SystemManager, int TrainerID); // done
 
     // INSERT OBJECTS
-void insertClient(SystemManager *SystemManager, const char *Name);
-void insertTrainer(SystemManager *SystemManager, const char *Name);
+void insertClient(SystemManager *SystemManager, const char *Name, const char* Badge);
+void insertTrainer(SystemManager *SystemManager, const char *Name, int salary);
 
     // IMPORT TXT FILE
 void importTrainerData(SystemManager *SystemManager, const char *fileName);
@@ -52,8 +52,8 @@ void exportTrainerData(SystemManager *SystemManager, const char *fileName);
 void exportClientData(SystemManager *SystemManager, const char *fileName);
 
     // SET FUNCTION
-void setTrainerSalary(SystemManager *SystemManager, int newIncome);
-void setClientSubscriptionBadge(SystemManager *SystemManager, enum SUBSCRIPTIONBADGE SubscriptionBadge);
+void setTrainerSalary(SystemManager *SystemManager, int TrainerID, int newIncome);
+void setClientSubscriptionBadge(SystemManager *SystemManager, int ClientID, char* subscriptionBadge);
 
     // GET ID BY NAME - LIST NAME LIST WITH ID WITH THAT NAME (CASE INSENSITIVE)
 void fetchTrainerIDsbyName(SystemManager *SystemManager, const char *Name);
