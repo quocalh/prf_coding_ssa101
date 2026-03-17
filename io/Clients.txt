@@ -5,3 +5,4 @@ Nguyen_Tran_Toan PLATINUM
 Nguyen_Tran_Minnh_Khoi GOLD
 Leaf_Cone FREE
 Nguyen_Cao_Minh_Hoang PLATINUM
+Cao_Bang_Con_Cho DIAMOND
