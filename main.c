@@ -16,37 +16,33 @@ int main()
     SayHello();
 
     SystemManager systemManager;
-    Client first_client;
-    systemManager.clients[0] = first_client;
-    strcpy(first_client.name, "Niggaton");
+    strcpy(systemManager.fileNameClient, "io/Clients.txt");
+    strcpy(systemManager.fileNameTrainer, "io/Trainers.txt");
 
-    printf("the first client's name is: %s\n", first_client.name);
+    // Client first_client;
+    // systemManager.clients[0] = first_client;
+    // strcpy(first_client.name, "Niggaton");
+
+    // printf("the first client's name is: %s\n", first_client.name);
 
 
 
-    first_client.ID = 5;
-    first_client.name;
+    // first_client.ID = 5;
+    // first_client.name;
 
-    strcpy(first_client.name, "my name is Kira\n");
+    // strcpy(first_client.name, "my name is Kira\n");
 
-    printf("Client ID is %d\n", first_client.ID);
-    printf("Client name is: %s\n", first_client.name);
+    // printf("Client ID is %d\n", first_client.ID);
+    // printf("Client name is: %s\n", first_client.name);
 
-    CurrentTime currentTime;
-
-    printf("today is a good day\n");
-
-    FetchTime(&currentTime);
-    printf("today is %d/%d/%d\n", currentTime.date, currentTime.month ,currentTime.year);
-    
     // mainInterface();
 
 
 
 
         // testing  import func (successful)
-    importClientData(&systemManager, "io/Clients.txt");
-    importTrainerData(&systemManager, "io/Trainers.txt");
+    // importClientData(&systemManager, "io/Clients.txt");
+    // importTrainerData(&systemManager, "io/Trainers.txt");
     // for (int i = 0; i < systemManager.ClientCount; i++)
     // {
     //     Client client = systemManager.clients[i];
@@ -72,8 +68,8 @@ int main()
 
 
         // testing export -- success
-    exportClientData(&systemManager, "io/Clients.txt");
-    exportTrainerData(&systemManager, "io/Trainers.txt");
+    // exportClientData(&systemManager, "io/Clients.txt");
+    // exportTrainerData(&systemManager, "io/Trainers.txt");
 
         // print client trainer -- success
     // DisplayClients(&systemManager);
@@ -99,4 +95,19 @@ int main()
     // insertTrainer(&systemManager, "nailtrimmer3000", 1203);
     // DisplayTrainers(&systemManager);
     // DescendingSortTrainerBySalary(&systemManager);
+
+    CurrentTime currentTime;
+
+    printf("today is a good day\n");
+
+    FetchTime(&currentTime);
+    printf("today is %d/%d/%d\n", currentTime.date, currentTime.month ,currentTime.year);
+    
+    importClientData(&systemManager, systemManager.fileNameClient);
+    importTrainerData(&systemManager, systemManager.fileNameTrainer);
+
+    mainInterface(&systemManager);
+
+    exportClientData(&systemManager, systemManager.fileNameClient);
+    exportTrainerData(&systemManager, systemManager.fileNameTrainer);
 }

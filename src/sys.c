@@ -322,7 +322,8 @@ bool stringCompare(const char *name1, const char *name2)
   	int name1Length = (int)strlen(name1); 
   	int name2Length = (int)strlen(name2);
 
-  	int CompLength = min(EVALUATE_RANK, name1Length);
+  	// int CompLength = min(EVALUATE_RANK, name1Length);
+  	int CompLength = name1Length;
   	CompLength = min(CompLength, name2Length);
 
   	char lowerCase1;

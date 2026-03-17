@@ -1,11 +1,38 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-void mainInterface();
+#include "../include/sys.h"
 
-    // will be separated from the main interface for cleaner code  
-void mainLoop();
-    //  prototype
-void objectModifyingLoop();
+void mainInterface(SystemManager* SystemManager);
+
+void mainInterface(SystemManager* SystemManager);
+
+// Import data
+void interfaceImportClientData(SystemManager* SystemManager);
+void interfaceImportTrainerData(SystemManager* SystemManager);
+
+// Set badges
+void interfaceSetClientBadge(SystemManager* SystemManager);
+void interfaceSetTrainerSalary(SystemManager* SystemManager);
+
+// Insert records
+void interfaceInsertTrainer(SystemManager* SystemManager);
+void interfaceInsertClient(SystemManager* SystemManager);
+
+// Sorted displays
+void interfaceDisplayTrainersSalaryAsc(SystemManager* SystemManager);
+void interfaceDisplayTrainersSalaryDesc(SystemManager* SystemManager);
+
+void interfaceDisplayTrainers(SystemManager* SystemManager);
+void interfaceDisplayClients(SystemManager* SystemManager);
+
+// Search by keywords
+void interfaceListTrainersByKeyword(SystemManager* SystemManager);
+void interfaceListClientsByKeyword(SystemManager* SystemManager);
+
+// Search by ID
+void interfaceFindTrainerByID(SystemManager* SystemManager);
+void interfaceFindClientByID(SystemManager* SystemManager);
+
 
 #endif
