@@ -93,7 +93,7 @@ void mainInterface(SystemManager* SystemManager)
             break;
 
         case 9:
-            interfaceDisplayClients(SystemManager);
+            interfaceDisplayTrainers(SystemManager);
             break;
 
         case 10:

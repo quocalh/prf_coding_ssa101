@@ -9,9 +9,9 @@
 #include <string.h>
 
 #define READ_FAILED_STRING "Failed to read the file\n"
-#define READ_SUCCESSED_STRING "Successfull read the file\n"
+#define READ_SUCCESSED_STRING "Successfully read the file\n"
 #define WRITE_FAILED_STRING "Failed to write the file\n"
-#define WRITE_SUCCESSED_STRING "Successfull write the file\n"
+#define WRITE_SUCCESSED_STRING "Successfully write the file\n"
 
 int min(int a, int b)
 {
