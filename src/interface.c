@@ -21,8 +21,8 @@ void mainInterface(SystemManager* SystemManager)
         printf("2. Import trainers' Data\n");
 
         // client trainer data are exported automatically by the end yk
-        printf("3. set Trainer Badge \n");
-        printf("4. set Client Badge \n");
+        printf("3. set Trainer's salary \n");
+        printf("4. set Client's badge \n");
 
         printf("5. Insert Trainer...\n");
         printf("6. Insert Client... \n");
